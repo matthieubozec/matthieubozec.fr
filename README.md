@@ -1,7 +1,7 @@
 # Matthieu Bozec - Lead developer and co-owner of 4h04 - Pro & Personal Website
 
 ![PHP](https://img.shields.io/badge/PHP-8.4-green)
-![Symfony](https://img.shields.io/badge/Symfony-7.3-green)
+![Symfony](https://img.shields.io/badge/Symfony-7.4-green)
 ![Deploy Status](https://github.com/krachot/matthieubozec.fr/actions/workflows/deploy.yml/badge.svg?branch=main)
 
 Shield: [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]

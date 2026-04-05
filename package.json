@@ -6,7 +6,7 @@
         "@hotwired/turbo": "^8.0",
         "@symfony/stimulus-bridge": "^4.0.1",
         "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
-        "@symfony/webpack-encore": "^5.2.0",
+        "@symfony/webpack-encore": "^6.0.0",
         "core-js": "^3.45.1",
         "file-loader": "^6.2.0",
         "prettier": "^3.6.2",
