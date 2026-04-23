@@ -17,3 +17,10 @@ well_known_webfinger:
     format: 'json'
     defaults:
         template: 'well_known/webfinger.json.twig'
+
+llms_txt:
+    path: "/llms.txt"
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+    format: 'txt'
+    defaults:
+        template: 'static/llms.txt.twig'

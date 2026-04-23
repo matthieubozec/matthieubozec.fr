@@ -1,12 +1,12 @@
 ---
 layout: 'default'
-title: 'Développeur web Symfony, WordPress, Laravel & React à Poitiers – Matthieu Bozec'
+title: 'Développeur web Symfony & WordPress à Poitiers – Matthieu Bozec'
 permalink: ''
 featuredImage: 'avatar-me-4.png'
 og:
   title: 'Développeur web Symfony, WordPress, Laravel & React à Poitiers'
 seo:
-  description: 'Développeur web à Poitiers, spécialisé en Symfony, WordPress, React et Laravel. J’accompagne entreprises et startups dans la création de sites et applications web performants.'
+  description: 'Développeur web freelance à Poitiers – Symfony, WordPress, Laravel & React. 20 ans d''expérience. Applications sur mesure et sites performants pour entreprises et organisations.'
 navigation:
   label: Accueil
   order: 1
@@ -23,11 +23,10 @@ faqs:
 ---
 
 {% block content %}
-  <twig:Hero class="py-6 md:py-14" title="Je construis des projets web solides, accessibles et faits pour durer." imagePath="{{ page.get('featuredImage') }}">
-    <p class="font-display text-step-2 text-balance">
-      Expertise <strong>Symfony</strong>, <strong>WordPress</strong>, <strong>Laravel</strong> et
-      <strong>React</strong>.
-    </p>
+  <twig:Hero
+    class="py-6 md:py-14 [&_#heroTitle]:text-step-4" title="Développeur web à Poitiers <br> Symfony, WordPress, Laravel & React"
+    imagePath="{{ page.get('featuredImage') }}"
+    imageAlt="Avatar de Matthieu Bozec, développeur web à Poitiers">
     <p class="font-sans text-step-0 text-black text-balance">
       Basé près de <strong>Poitiers</strong>, j’accompagne <strong>entreprises</strong> et <strong>organisations</strong> avec une approche claire,
       pragmatique et orientée résultats.
@@ -88,4 +87,59 @@ faqs:
     Je conçois des applications et des sites sur mesure, <strong>fiables et évolutifs</strong>,
     avec <strong>Symfony</strong>, <strong>WordPress</strong>, <strong>Laravel</strong> ou <strong>React</strong>.
   </twig:Cta>
+{% endblock %}
+
+{% block jsonld %}
+  {{ parent() }}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Matthieu Bozec",
+      "url": "https://www.matthieubozec.fr/"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Matthieu Bozec",
+      "url": "https://www.matthieubozec.fr/",
+      "jobTitle": "Développeur web",
+      "description": "Développeur web spécialisé en Symfony, WordPress, Laravel et React, basé à Poitiers.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nouaillé-Maupertuis",
+        "addressRegion": "Vienne",
+        "addressCountry": "FR"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/matthieubozec/",
+        "https://github.com/matthieubozec",
+        "https://bsky.app/profile/krachot.bsky.social",
+        "https://piaille.fr/@krachot"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "4h04",
+        "url": "https://4h04.com"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Matthieu Bozec — Développeur web",
+      "url": "https://www.matthieubozec.fr/",
+      "areaServed": ["Poitiers", "Vienne", "Poitou-Charentes", "France"],
+      "serviceType": ["Développement web", "Applications Symfony", "Applications Laravel", "API Platform", "Sites WordPress", "Développement React"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nouaillé-Maupertuis",
+        "addressRegion": "Vienne",
+        "addressCountry": "FR"
+      }
+    }
+  </script>
 {% endblock %}

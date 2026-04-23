@@ -1,11 +1,11 @@
-{% props title = null, imagePath = null, withCta = true %}
+{% props title = null, imagePath = null, withCta = true, imageAlt = '' %}
 
 <section class="hero {{ attributes.defaults({'class': 'wrapper @container/hero'}).render('class')|tailwind_merge }}"
          {{ attributes.defaults({}).without('class') }} aria-labelledby="heroTitle">
   <div class="pt-6 pb-14 @2xl:py-14 {{ imagePath ? 'flex flex-col-reverse gap-y-6 @2xl:grid @2xl:gap-2 @2xl:grid-cols-[minmax(0,_1fr)_33cqw]' }}">
     <div class="text-headline space-y-6">
       {% if title %}
-        <twig:Heading level="1" size="lg" id="heroTitle">{{ title }}</twig:Heading>
+        <twig:Heading level="1" size="lg" id="heroTitle">{{ title|raw }}</twig:Heading>
       {% endif %}
       <div class="space-y-6">
         {% block content '' %}
@@ -27,7 +27,7 @@
           sizes="(max-width: 1024px) 33cqw, 498px"
           fetchpriority="high"
           loading="eager"
-          alt=""
+          alt="{{ imageAlt }}"
           class="w-[33cqw] mx-auto @2xl:w-auto @2xl:mx-0 aspect-1 rotate-3 rounded-lg border-4 border-black object-cover shadow-md shadow-gray-400"
         />
       </div>
