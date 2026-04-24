@@ -1,6 +1,7 @@
 ---
 layout: 'default'
 title: 'Développement Symfony Poitiers – APIs & Apps web | 4h04'
+featuredImage: 'avatar-sf.png'
 permalink: 'services/developpement-symfony-poitiers'
 og:
   title: 'Développement Symfony à Poitiers'
@@ -22,7 +23,9 @@ faqs:
 {% block og_title page.get('og.title', page.get('title')) %}
 
 {% block content %}
-  <twig:Hero title="Développement avec Symfony à Poitiers (86)">
+  <twig:Hero title="Développement avec Symfony à Poitiers (86)"
+             imagePath="{{ page.get('featuredImage') }}"
+             imageAlt="Avatar de Matthieu Bozec, développeur Symfony à Poitiers">
     <p class="font-display text-step-2 text-balance">
       Framework PHP reconnu pour sa robustesse et sa longévité, <strong>Symfony</strong> est la base de mes projets web.
     </p>
