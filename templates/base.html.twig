@@ -24,6 +24,10 @@
   <meta property="og:description" content="{{ block('meta_description') }}">
   <meta property="og:type" content="{% block og_type 'website' %}">
   <meta property="og:url" content="{{ block('meta_canonical') }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ block('title') }}">
+  <meta name="twitter:description" content="{{ block('meta_description') }}">
+  <meta name="twitter:image" content="{{ block('og_image') }}">
   {% block head '' %}
 
   {% block preload_fonts %}
