@@ -26,10 +26,10 @@ faqs:
     <p class="font-display text-step-2 text-balance">
       Framework PHP reconnu pour sa robustesse et sa longévité, <strong>Symfony</strong> est la base de mes projets web.
     </p>
-    <h2 class="font-sans text-step-0 text-balance">
+    <p class="font-sans text-step-0 text-balance">
       En tant que <strong>développeur Symfony à Poitiers</strong>, j’utilise ce framework pour créer des solutions durables,
       maintenables et performantes.
-    </h2>
+    </p>
     <p class="font-sans text-step-0 text-black text-balance">
       Basé près de <strong>Poitiers</strong>, dans la <strong>Vienne (86)</strong>, j’accompagne les entreprises et organisations
       du <strong>Poitou-Charentes</strong> dans la conception d’applications web, d’APIs et d’outils métiers fiables et performants avec <strong>Symfony</strong>.
@@ -65,31 +65,36 @@ faqs:
         </p>
       </div>
 
-      <div class="auto-grid" style="--auto-grid-max-columns: 3; --auto-grid-min-size: 18rem; --auto-grid-gap: 1rem;">
+      <div class="auto-grid" style="--auto-grid-max-columns: 2; --auto-grid-min-size: 18rem; --auto-grid-gap: 1rem;">
         <twig:Card>
           <twig:Heading level="3" size="sm">Développement d’applications métiers</twig:Heading>
           <div class="prose">
-            <p>
-              Outils sur mesure, portails internes, plateformes collaboratives ou extranets développés avec Symfony.
-            </p>
+            <p>Portails internes, espaces clients, extranets, back-offices complexes ou outils de gestion sur mesure — Symfony offre l’architecture adaptée à des projets ambitieux et durables. Les composants natifs (<strong>Security</strong>, <strong>Workflow</strong>, <strong>Messenger</strong>, <strong>Form</strong>) couvrent les cas métier les plus exigeants sans dépendances fragiles.</p>
+            <p>Chaque module est isolé, testé et documenté pour faciliter les évolutions futures. La structure en services permet d’intégrer progressivement de nouvelles fonctionnalités sans remettre en cause l’existant.</p>
           </div>
         </twig:Card>
 
         <twig:Card>
           <twig:Heading level="3" size="sm">Création d’APIs REST et GraphQL</twig:Heading>
           <div class="prose">
-            <p>
-              Conception d’APIs robustes avec <strong>API Platform</strong> pour connecter vos services ou applications tierces.
-            </p>
+            <p>Conception d’APIs robustes avec <strong>API Platform</strong> : endpoints RESTful ou GraphQL, sérialisation configurable (JSON-LD, JSON, XML) et documentation <strong>OpenAPI</strong> générée automatiquement. Idéal pour alimenter des applications mobiles, des frontends <strong>React</strong> ou des intégrations partenaires.</p>
+            <p>Sécurisation par <strong>JWT</strong> ou OAuth2, contrôles d’accès granulaires par ressource, gestion du versioning et optimisation des performances via mise en cache HTTP. L’API reste maintenable et évolutive à mesure que votre système croît.</p>
           </div>
         </twig:Card>
 
         <twig:Card>
           <twig:Heading level="3" size="sm">Audit et optimisation</twig:Heading>
           <div class="prose">
-            <p>
-              Analyse de code, amélioration des performances, mise en place de caches Redis ou d’index Elasticsearch. Optimisation des requêtes <strong>Doctrine</strong>.
-            </p>
+            <p>Analyse approfondie d’un projet Symfony existant : qualité du code, architecture des bundles, requêtes N+1 non détectées, absence de cache, vulnérabilités de sécurité et couverture par les tests. Un rapport structuré identifie les priorités et les gains mesurables attendus.</p>
+            <p>Interventions concrètes : optimisation des requêtes <strong>Doctrine</strong> (DQL, index, hydration partielle), mise en place d’un cache <strong>Redis</strong>, intégration d’un moteur de recherche (<strong>Meilisearch</strong>, <strong>Elasticsearch</strong>) et profilage via <strong>Blackfire</strong>.</p>
+          </div>
+        </twig:Card>
+
+        <twig:Card>
+          <twig:Heading level="3" size="sm">Reprise et migration Symfony</twig:Heading>
+          <div class="prose">
+            <p>Reprise d’un projet Symfony existant ou migration depuis une version ancienne (4.x, 5.4 en fin de vie) vers <strong>Symfony 7.4 LTS</strong> — version longue durée recommandée — ou vers <strong>Symfony 8</strong>, la dernière version majeure. Audit préalable de la dette technique, identification des dépendances obsolètes et planification d’une migration par étapes sans interruption de service.</p>
+            <p>Chaque étape est validée en préproduction : mise à jour des dépendances <strong>Composer</strong>, adaptation aux changements d’API du framework, migration <strong>Doctrine</strong> et réécriture des parties dépréciées. Livraison documentée avec procédure de rollback.</p>
           </div>
         </twig:Card>
 
@@ -110,54 +115,48 @@ faqs:
         <twig:Card>
           <twig:Heading level="3" size="sm">API Platform</twig:Heading>
           <div class="prose">
-            <p>
-              Création d’APIs REST et GraphQL performantes.
-            </p>
+            <p>Framework open source construit sur Symfony, <strong>API Platform</strong> génère des APIs REST et GraphQL à partir de vos ressources PHP — pagination, filtres, sérialisation et relations inclus d’emblée. La documentation <strong>OpenAPI</strong> est produite automatiquement et reste toujours synchronisée avec le code.</p>
+            <p>Sécurité par ressource via les voters Symfony, groupes de sérialisation pour contrôler précisément les données exposées par opération, support JSON-LD, JSON et XML. La base idéale pour des architectures headless ou des intégrations partenaires.</p>
           </div>
         </twig:Card>
 
         <twig:Card>
           <twig:Heading level="3" size="sm">Doctrine ORM</twig:Heading>
           <div class="prose">
-            <p>
-              Gestion fiable et évolutive des bases de données.
-            </p>
+            <p><strong>Doctrine ORM</strong> assure la correspondance entre entités PHP et base de données relationnelle (MySQL, PostgreSQL, SQLite). Relations complexes, transactions, événements de cycle de vie et versionnage du schéma via les <strong>migrations</strong> : l’essentiel pour une base de données fiable et évolutive en équipe.</p>
+            <p>Les stratégies d’hydration (objet, tableau, scalaire) et le <strong>DQL</strong> permettent d’optimiser les requêtes critiques et d’éliminer les problèmes N+1. Chaque accès aux données reste lisible, testable et indépendant du moteur SQL sous-jacent.</p>
           </div>
         </twig:Card>
 
         <twig:Card>
           <twig:Heading level="3" size="sm">Redis</twig:Heading>
           <div class="prose">
-            <p>
-              Cache et file d’attente pour des performances accrues.
-            </p>
+            <p>Intégré nativement à Symfony via les composants <strong>Cache</strong> et <strong>Messenger</strong>, <strong>Redis</strong> sert simultanément de stockage de sessions, de pool de cache applicatif et de file d’attente pour les traitements asynchrones — un seul outil pour trois usages critiques en production.</p>
+            <p>Le passage à Redis supprime la majorité des requêtes répétitives vers la base de données et réduit drastiquement les temps de réponse. Indispensable dès que l’application monte en charge ou traite des flux de messages.</p>
           </div>
         </twig:Card>
 
         <twig:Card>
           <twig:Heading level="3" size="sm">Elasticsearch / Meilisearch</twig:Heading>
           <div class="prose">
-            <p>
-              Moteur de recherche rapide et pertinent.
-            </p>
+            <p>Quand les requêtes SQL <code>LIKE</code> ne suffisent plus, un moteur de recherche dédié prend le relais. <strong>Meilisearch</strong> offre une intégration simple et une pertinence immédiate — idéal pour la majorité des projets. <strong>Elasticsearch</strong> s’impose sur des volumes massifs ou des besoins d’analyse avancée.</p>
+            <p>Recherche plein texte, suggestions, facettes, tolérance aux fautes de frappe, tri par pertinence — indexation pilotée depuis Symfony via des listeners <strong>Doctrine</strong>. La recherche devient un atout fonctionnel plutôt qu’une contrainte technique.</p>
           </div>
         </twig:Card>
 
         <twig:Card>
           <twig:Heading level="3" size="sm">Twig</twig:Heading>
           <div class="prose">
-            <p>
-              Moteur de template clair et maintenable.
-            </p>
+            <p>Moteur de template par défaut de Symfony, <strong>Twig</strong> structure les vues côté serveur avec un système d’héritage clair (<code>extends</code>, <code>block</code>, <code>include</code>). L’échappement automatique des variables protège contre les failles XSS sans effort supplémentaire.</p>
+            <p>Les extensions Twig permettent d’ajouter filtres et fonctions métier réutilisables dans toute l’application. Combiné aux <strong>Twig Components</strong> de Symfony UX, il permet de créer des composants serveur encapsulés, réutilisables et testables unitairement.</p>
           </div>
         </twig:Card>
 
         <twig:Card>
           <twig:Heading level="3" size="sm">Hotwired (Turbo & Stimulus)</twig:Heading>
           <div class="prose">
-            <p>
-              Interface dynamique et réactive sans JavaScript complexe. Parfaitement intégré à Symfony UX.
-            </p>
+            <p><strong>Turbo</strong> intercepte la navigation et les soumissions de formulaires pour mettre à jour la page via AJAX — sans écrire de JavaScript. <strong>Turbo Frames</strong> isole les zones à rafraîchir indépendamment ; <strong>Turbo Streams</strong> pousse des mises à jour en temps réel depuis le serveur.</p>
+            <p><strong>Stimulus</strong> complète l’ensemble avec des contrôleurs JS légers pour les comportements d’interface (menus, modales, validations). Intégrés à <strong>Symfony UX</strong>, Turbo et Stimulus permettent des interfaces dynamiques et réactives tout en conservant un rendu HTML côté serveur.</p>
           </div>
         </twig:Card>
 
