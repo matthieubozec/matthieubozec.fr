@@ -6,11 +6,13 @@ namespace App\Tests\Unit\Tracking;
 
 use App\Tracking\RedisVisitTracker;
 use App\Tracking\VisitTrackerInterface;
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Redis;
 use Symfony\Component\HttpFoundation\Request;
 
+#[RequiresPhpExtension('redis')]
 class RedisVisitTrackerTest extends TestCase
 {
     private \Redis&MockObject $redis;
