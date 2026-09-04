@@ -33,7 +33,11 @@ host('www')
 // Hooks
 task('deploy:assets', function () {
     run('{{bin/console}} assets:install {{console_options}} {{release_path}}/public');
-    run('export PATH="$HOME/.nodenv/bin:$PATH" && eval "$(nodenv init -)" && cd {{release_path}} && npm install && npm run build');
+    // npm install + build depasse largement le timeout par defaut de 300s de Deployer.
+    run(
+        'export PATH="$HOME/.nodenv/bin:$PATH" && eval "$(nodenv init -)" && cd {{release_path}} && npm ci --prefer-offline --no-audit --no-fund && npm run build',
+        timeout: 1800,
+    );
 });
 
 after('deploy:cache:clear', 'deploy:assets');
