@@ -267,15 +267,16 @@
         ]
     },
     "symfony/ux-icons": {
-        "version": "2.29",
+        "version": "3.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
-            "version": "2.17",
-            "ref": "803a3bbd5893f9584969ab8670290cdfb6a0a5b5"
+            "version": "3.4",
+            "ref": "16a3114526e46593b494471d1654dfa46831beb5"
         },
         "files": [
-            "assets/icons/symfony.svg"
+            "assets/icons/symfony.svg",
+            "config/packages/ux_icons.yaml"
         ]
     },
     "symfony/ux-turbo": {
