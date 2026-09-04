@@ -62,12 +62,13 @@ class RedisVisitTrackerTest extends TestCase
             ->method('zAdd')
             ->with("visits:{$expectedDay}", $this->isFloat(), $expectedJson);
 
-        $this->redis->expects($this->exactly(3))
+        $this->redis->expects($this->exactly(4))
             ->method('expire')
             ->with($this->logicalOr(
                 $this->identicalTo("visits:{$expectedDay}"),
                 $this->identicalTo("pageviews:total:{$expectedDay}"),
-                $this->identicalTo("pageviews:/test-page:{$expectedDay}")
+                $this->identicalTo("pageviews:/test-page:{$expectedDay}"),
+                $this->identicalTo("visitors:unique:{$expectedDay}")
             ), $expectedTtl);
 
         $this->redis->expects($this->exactly(2))
@@ -80,6 +81,10 @@ class RedisVisitTrackerTest extends TestCase
         $this->redis->expects($this->once())
             ->method('zIncrBy')
             ->with('pageviews:zset', 1, '/test-page');
+
+        $this->redis->expects($this->once())
+            ->method('sAdd')
+            ->with("visitors:unique:{$expectedDay}", $this->isString());
 
         $this->redis->expects($this->once())
             ->method('exec');
@@ -116,12 +121,13 @@ class RedisVisitTrackerTest extends TestCase
             ->method('zAdd')
             ->with("visits:{$expectedDay}", $this->isFloat(), $expectedJson);
 
-        $this->redis->expects($this->exactly(3))
+        $this->redis->expects($this->exactly(4))
             ->method('expire')
             ->with($this->logicalOr(
                 $this->identicalTo("visits:{$expectedDay}"),
                 $this->identicalTo("pageviews:total:{$expectedDay}"),
-                $this->identicalTo("pageviews:/minimal-page:{$expectedDay}")
+                $this->identicalTo("pageviews:/minimal-page:{$expectedDay}"),
+                $this->identicalTo("visitors:unique:{$expectedDay}")
             ), $expectedTtl);
 
         $this->redis->expects($this->exactly(2))
@@ -134,6 +140,10 @@ class RedisVisitTrackerTest extends TestCase
         $this->redis->expects($this->once())
             ->method('zIncrBy')
             ->with('pageviews:zset', 1, '/minimal-page');
+
+        $this->redis->expects($this->once())
+            ->method('sAdd')
+            ->with("visitors:unique:{$expectedDay}", $this->isString());
 
         $this->redis->expects($this->once())
             ->method('exec');
@@ -155,7 +165,7 @@ class RedisVisitTrackerTest extends TestCase
             ->method('zAdd')
             ->with($this->stringContains('visits:'), $this->isFloat(), $this->isString());
 
-        $this->redis->expects($this->exactly(3))
+        $this->redis->expects($this->exactly(4))
             ->method('expire');
 
         $this->redis->expects($this->exactly(2))
@@ -163,6 +173,10 @@ class RedisVisitTrackerTest extends TestCase
 
         $this->redis->expects($this->once())
             ->method('zIncrBy');
+
+        $this->redis->expects($this->once())
+            ->method('sAdd')
+            ->with($this->stringContains('visitors:unique:'), $this->isString());
 
         $this->redis->expects($this->once())
             ->method('exec');
@@ -187,12 +201,13 @@ class RedisVisitTrackerTest extends TestCase
             ->method('zAdd')
             ->with("visits:{$expectedDay}", $this->isFloat(), $this->isString());
 
-        $this->redis->expects($this->exactly(3))
+        $this->redis->expects($this->exactly(4))
             ->method('expire')
             ->with($this->logicalOr(
                 $this->identicalTo("visits:{$expectedDay}"),
                 $this->identicalTo("pageviews:total:{$expectedDay}"),
-                $this->identicalTo("pageviews:/test-page/with-special-chars_123:{$expectedDay}")
+                $this->identicalTo("pageviews:/test-page/with-special-chars_123:{$expectedDay}"),
+                $this->identicalTo("visitors:unique:{$expectedDay}")
             ), $expectedTtl);
 
         $this->redis->expects($this->exactly(2))
@@ -205,6 +220,10 @@ class RedisVisitTrackerTest extends TestCase
         $this->redis->expects($this->once())
             ->method('zIncrBy')
             ->with('pageviews:zset', 1, '/test-page/with-special-chars_123');
+
+        $this->redis->expects($this->once())
+            ->method('sAdd')
+            ->with("visitors:unique:{$expectedDay}", $this->isString());
 
         $this->redis->expects($this->once())
             ->method('exec');
@@ -254,12 +273,13 @@ class RedisVisitTrackerTest extends TestCase
                     && is_numeric($data['timestamp']);
             }));
 
-        $this->redis->expects($this->exactly(3))
+        $this->redis->expects($this->exactly(4))
             ->method('expire')
             ->with($this->logicalOr(
                 $this->identicalTo("visits:{$expectedDay}"),
                 $this->identicalTo("pageviews:total:{$expectedDay}"),
-                $this->identicalTo("pageviews:/test-page:{$expectedDay}")
+                $this->identicalTo("pageviews:/test-page:{$expectedDay}"),
+                $this->identicalTo("visitors:unique:{$expectedDay}")
             ), $expectedTtl);
 
         $this->redis->expects($this->exactly(2))
@@ -272,6 +292,10 @@ class RedisVisitTrackerTest extends TestCase
         $this->redis->expects($this->once())
             ->method('zIncrBy')
             ->with('pageviews:zset', 1, '/test-page');
+
+        $this->redis->expects($this->once())
+            ->method('sAdd')
+            ->with("visitors:unique:{$expectedDay}", $this->isString());
 
         $this->redis->expects($this->once())
             ->method('exec');
@@ -296,12 +320,13 @@ class RedisVisitTrackerTest extends TestCase
             ->method('zAdd')
             ->with("visits:{$expectedDay}", $this->isFloat(), $this->isString());
 
-        $this->redis->expects($this->exactly(3))
+        $this->redis->expects($this->exactly(4))
             ->method('expire')
             ->with($this->logicalOr(
                 $this->identicalTo("visits:{$expectedDay}"),
                 $this->identicalTo("pageviews:total:{$expectedDay}"),
-                $this->identicalTo("pageviews:/test-page:{$expectedDay}")
+                $this->identicalTo("pageviews:/test-page:{$expectedDay}"),
+                $this->identicalTo("visitors:unique:{$expectedDay}")
             ), $expectedTtl);
 
         $this->redis->expects($this->exactly(2))
@@ -314,6 +339,10 @@ class RedisVisitTrackerTest extends TestCase
         $this->redis->expects($this->once())
             ->method('zIncrBy')
             ->with('pageviews:zset', 1, '/test-page');
+
+        $this->redis->expects($this->once())
+            ->method('sAdd')
+            ->with("visitors:unique:{$expectedDay}", $this->isString());
 
         $this->redis->expects($this->once())
             ->method('exec');
@@ -338,12 +367,13 @@ class RedisVisitTrackerTest extends TestCase
             ->method('zAdd')
             ->with("visits:{$expectedDay}", $this->isFloat(), $this->isString());
 
-        $this->redis->expects($this->exactly(3))
+        $this->redis->expects($this->exactly(4))
             ->method('expire')
             ->with($this->logicalOr(
                 $this->identicalTo("visits:{$expectedDay}"),
                 $this->identicalTo("pageviews:total:{$expectedDay}"),
-                $this->identicalTo("pageviews:/test-page:{$expectedDay}")
+                $this->identicalTo("pageviews:/test-page:{$expectedDay}"),
+                $this->identicalTo("visitors:unique:{$expectedDay}")
             ), $expectedTtl);
 
         $this->redis->expects($this->exactly(2))
@@ -356,6 +386,10 @@ class RedisVisitTrackerTest extends TestCase
         $this->redis->expects($this->once())
             ->method('zIncrBy')
             ->with('pageviews:zset', 1, '/test-page');
+
+        $this->redis->expects($this->once())
+            ->method('sAdd')
+            ->with("visitors:unique:{$expectedDay}", $this->isString());
 
         $this->redis->expects($this->once())
             ->method('exec');

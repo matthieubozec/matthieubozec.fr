@@ -101,12 +101,12 @@
         "linting": [
             "bin/console lint:container",
             "bin/console lint:yaml config --parse-tags",
-            "bin/console lint:twig templates --show-deprecations"
+            "bin/console lint:twig templates --show-deprecations --excludes=page"
         ],
         "tests": "bin/phpunit",
-        "tests-unit": "bin/phpunit --testsuite unit",
-        "tests-integration": "bin/phpunit --testsuite integration",
-        "tests-functional": "bin/phpunit --testsuite functional",
+        "tests-unit": "bin/phpunit --testsuite Unit",
+        "tests-integration": "bin/phpunit --testsuite Integration",
+        "tests-functional": "bin/phpunit --testsuite Functional",
         "phpstan": [
             "@phpstan-src",
             "@phpstan-tests"

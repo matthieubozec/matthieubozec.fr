@@ -13,11 +13,10 @@ class Honeypot extends Constraint
 
     public function __construct(
         ?string $message = null,
-        mixed $options = null,
         ?array $groups = null,
         mixed $payload = null,
     ) {
-        parent::__construct($options, $groups, $payload);
+        parent::__construct(null, $groups, $payload);
 
         if ($message) {
             $this->message = $message;

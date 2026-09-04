@@ -25,6 +25,7 @@ class ContactMessagesTableWarmer implements CacheWarmerInterface
     {
         $this->logger?->info('[ContactMessagesTableWarmer] Vérification de la table contact_messages...');
         $this->initializer->initialize();
+
         return [];
     }
 }

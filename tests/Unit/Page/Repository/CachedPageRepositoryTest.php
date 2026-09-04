@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Page\Repository;
 
 use App\Page\Page;
-use App\Page\Repository\CachedPageRepository;
-use App\Page\Repository\PageRepository;
-use App\Page\TemplateData;
 use App\Page\PageRepositoryInterface;
+use App\Page\Repository\CachedPageRepository;
+use App\Page\TemplateData;
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
@@ -114,7 +113,6 @@ final class CachedPageRepositoryTest extends TestCase
     }
 
     /** ---------------- Helpers ---------------- */
-
     private function makePage(string $key, string $permalink): Page
     {
         return new Page(

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Page\Repository;
 
 use App\Page\Page;
+use App\Page\PageLoaderInterface;
 use App\Page\Repository\PageRepository;
 use App\Page\TemplateData;
-use App\Page\PageLoaderInterface;
 use PHPUnit\Framework\TestCase;
 
 final class PageRepositoryTest extends TestCase
@@ -66,7 +66,6 @@ final class PageRepositoryTest extends TestCase
     }
 
     /** ---------------- Helpers ---------------- */
-
     private function makePage(string $key, string $permalink): Page
     {
         return new Page(

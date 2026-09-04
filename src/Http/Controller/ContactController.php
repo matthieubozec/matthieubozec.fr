@@ -31,6 +31,7 @@ class ContactController extends AbstractController
 
             if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
                 return $this->renderBlock('contact/index.html.twig', 'success_stream');
             }
 
@@ -40,6 +41,7 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && !$form->isValid()) {
             if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
                 return $this->renderBlock('contact/index.html.twig', 'error_stream', [
                     'form' => $form,
                 ]);
