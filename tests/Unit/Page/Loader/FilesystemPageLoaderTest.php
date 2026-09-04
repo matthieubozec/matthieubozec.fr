@@ -25,10 +25,10 @@ final class FilesystemPageLoaderTest extends TestCase
         $this->createTwig(
             'home.twig',
             [
-                'layout'    => 'base',
+                'layout' => 'base',
                 'permalink' => '/home',
-                'title'     => 'Accueil',
-                'nested'    => ['foo' => 'bar'],
+                'title' => 'Accueil',
+                'nested' => ['foo' => 'bar'],
             ],
             "<h1>Hello</h1>\n<p>Welcome</p>\n",
             1710000000
@@ -38,7 +38,7 @@ final class FilesystemPageLoaderTest extends TestCase
         $this->createTwig(
             'blog/post-1.detail.twig',
             [
-                'layout'    => 'article',
+                'layout' => 'article',
                 'permalink' => '/blog/post-1',
             ],
             "<article>Post 1</article>\n",

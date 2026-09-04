@@ -6,23 +6,32 @@ on:
             - main
     workflow_dispatch:
 
+concurrency:
+    group: deploy-www
+    cancel-in-progress: false
+
 jobs:
+    tests:
+        uses: ./.github/workflows/tests.yml
+
     deploy:
+        needs: tests
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
-              uses: actions/checkout@v3
+              uses: actions/checkout@v5
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: '8.4'
+                  php-version: '8.5'
                   tools: composer
 
             - name: Deploy with Deployer Action
-              uses: deployphp/action@v1
+              uses: deployphp/action@v1.0.26
               with:
                   dep: 'deploy www'
+                  options: '-vvv'
                   private-key: ${{ secrets.SSH_PRIVATE_KEY }}
                   known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-                  deployer-version: '7.0.0'
+                  deployer-version: '8.0.5'

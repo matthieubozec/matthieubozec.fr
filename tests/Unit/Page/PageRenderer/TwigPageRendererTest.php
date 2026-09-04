@@ -39,7 +39,7 @@ final class TwigPageRendererTest extends TestCase
 
         $this->assertSame('<html><body>OK</body></html>', $response->getContent());
         $this->assertSame(
-            $page->lastModified()?->format(\DateTimeInterface::RFC7231),
+            $page->lastModified()?->setTimezone(new \DateTimeZone('UTC'))->format('D, d M Y H:i:s').' GMT',
             $response->headers->get('Last-Modified')
         );
     }

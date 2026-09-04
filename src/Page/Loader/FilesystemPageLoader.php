@@ -9,6 +9,7 @@ use App\Page\PageLoaderInterface;
 use App\Page\TemplateData;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
 
 readonly class FilesystemPageLoader implements PageLoaderInterface
@@ -61,9 +62,9 @@ readonly class FilesystemPageLoader implements PageLoaderInterface
         return ['', $contents];
     }
 
-    private function resolveKey(\SplFileInfo $file): string
+    private function resolveKey(SplFileInfo $file): string
     {
-        $name = ltrim(str_replace($this->basePath, '', $file->getRealPath()), '/');
+        $name = $file->getRelativePathname();
 
         // On enlève tout ce qu’il y a après le premier point (toutes extensions)
         $name = preg_replace('/\..*$/', '', $name);

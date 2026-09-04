@@ -1,0 +1,72 @@
+name: Run tests
+
+on:
+    push:
+        branches-ignore:
+            - main
+    pull_request:
+    workflow_call:
+    workflow_dispatch:
+
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+
+        services:
+            redis:
+                image: redis:7
+                ports:
+                    - 6379:6379
+                options: >-
+                    --health-cmd "redis-cli ping"
+                    --health-interval 10s
+                    --health-timeout 5s
+                    --health-retries 5
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+
+            - name: Set up PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.5'
+                  extensions: ctype, iconv, intl, mbstring, pdo_sqlite, redis
+                  tools: composer
+                  coverage: none
+
+            - name: Prepare test database (SQLite)
+              run: |
+                  mkdir -p var/db
+                  touch var/db/data_prod.db var/db/data_dev.db var/db/data_test.db
+
+            - name: Get composer cache directory
+              id: composer-cache
+              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+            - name: Cache composer dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ${{ steps.composer-cache.outputs.dir }}
+                  key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                  restore-keys: ${{ runner.os }}-composer-
+
+            - name: Install dependencies
+              run: composer install --no-interaction --no-progress --prefer-dist
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v5
+              with:
+                  node-version-file: .node-version
+                  cache: npm
+
+            - name: Install JS dependencies
+              run: npm ci
+
+            - name: Build assets
+              run: npm run build
+
+            - name: Check code
+              env:
+                  REDIS_DSN: redis://127.0.0.1:6379
+              run: composer code-check

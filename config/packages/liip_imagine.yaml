@@ -1,5 +1,7 @@
 liip_imagine:
     driver: "gd"
+    twig:
+        mode: lazy
     data_loader: image_loader
     cache: image_resolver
     controller:

@@ -16,7 +16,5 @@ parameters:
         - %rootDir%/../../../tests/bootstrap.php
     symfony:
         containerXmlPath: %rootDir%/../../../var/cache/dev/App_KernelDevDebugContainer.xml
-    scanDirectories:
-        - %rootDir%/../../../var/cache/dev/Symfony/Config
     scanFiles:
         - %rootDir%/../../../vendor/symfony/dependency-injection/Loader/Configurator/ContainerConfigurator.php

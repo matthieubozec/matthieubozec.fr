@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Database;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Schema\PrimaryKeyConstraint;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Types\Types;
 use Psr\Log\LoggerInterface;
@@ -14,7 +15,8 @@ final readonly class ContactMessagesTableInitializer
     public function __construct(
         private Connection $connection,
         private ?LoggerInterface $logger = null,
-    ) {}
+    ) {
+    }
 
     public function initialize(): void
     {
@@ -23,6 +25,7 @@ final readonly class ContactMessagesTableInitializer
 
             if ($schemaManager->tablesExist(['contact_messages'])) {
                 $this->logger?->info('Table contact_messages déjà existante, aucune action.');
+
                 return;
             }
 
@@ -36,7 +39,11 @@ final readonly class ContactMessagesTableInitializer
             $table->addColumn('budget', Types::STRING, ['length' => 50, 'notnull' => false]);
             $table->addColumn('message', Types::TEXT, ['notnull' => true]);
             $table->addColumn('created_at', Types::DATE_IMMUTABLE, ['notnull' => true]);
-            $table->setPrimaryKey(['id']);
+            $table->addPrimaryKeyConstraint(
+                PrimaryKeyConstraint::editor()
+                    ->setUnquotedColumnNames('id')
+                    ->create()
+            );
 
             foreach ($schema->toSql($this->connection->getDatabasePlatform()) as $sql) {
                 $this->connection->executeStatement($sql);

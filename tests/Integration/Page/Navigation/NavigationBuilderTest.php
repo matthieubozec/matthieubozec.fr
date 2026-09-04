@@ -66,7 +66,6 @@ final class NavigationBuilderTest extends KernelTestCase
     }
 
     /** ---------------- Helpers ---------------- */
-
     private function makePage(string $key, string $permalink, array $navigation /* @phpstan-ignore missingType.iterableValue */): Page
     {
         $data = [

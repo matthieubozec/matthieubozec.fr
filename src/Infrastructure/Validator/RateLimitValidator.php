@@ -6,7 +6,7 @@ namespace App\Infrastructure\Validator;
 
 use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
 use Symfony\Component\DependencyInjection\ServiceLocator;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\RateLimiterFactoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -15,7 +15,7 @@ class RateLimitValidator extends ConstraintValidator
 {
     public function __construct(
         /**
-         * @var ServiceLocator<RateLimiterFactory> $limiterProvider
+         * @var ServiceLocator<RateLimiterFactoryInterface> $limiterProvider
          */
         #[AutowireLocator('rate_limiter')]
         private ServiceLocator $limiterProvider,
@@ -37,7 +37,7 @@ class RateLimitValidator extends ConstraintValidator
             throw new \RuntimeException(sprintf('Le rate limiter "%s" est introuvable.', $constraint->limiter));
         }
 
-        /** @var RateLimiterFactory $factory */
+        /** @var RateLimiterFactoryInterface $factory */
         $factory = $this->limiterProvider->get($limiterName);
         $key = $constraint->key ?? (string) $value;
 

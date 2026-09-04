@@ -6,9 +6,11 @@ namespace App\Tests\Integration\Tracking;
 
 use App\Infrastructure\Redis\RedisProvider;
 use App\Tracking\RedisVisitTracker;
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
+#[RequiresPhpExtension('redis')]
 class RedisVisitTrackerIntegrationTest extends TestCase
 {
     private RedisProvider $redisProvider;

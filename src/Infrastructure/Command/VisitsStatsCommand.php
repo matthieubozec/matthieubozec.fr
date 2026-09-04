@@ -37,8 +37,8 @@ final class VisitsStatsCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        /** @var int $days */
-        $days = (int) $input->getOption('days');
+        $daysOption = $input->getOption('days');
+        $days = is_numeric($daysOption) ? (int) $daysOption : 30;
         $io = new SymfonyStyle($input, $output);
 
         $io->title(sprintf('📊 Statistiques des %d derniers jours', $days));

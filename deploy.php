@@ -6,7 +6,7 @@ require 'recipe/symfony.php';
 
 // Config
 
-set('repository', 'git@github.com:krachot/matthieubozec.fr.git');
+set('repository', 'git@github.com:matthieubozec/matthieubozec.fr.git');
 
 add('shared_files', [
     'var/db/data_prod.db',
@@ -19,6 +19,7 @@ add('writable_dirs', [
 ]);
 
 set('http_user', 'matthieu');
+set('bin/php', '/usr/bin/php8.5');
 
 // Hosts
 host('www')
